@@ -3,12 +3,22 @@ import 'package:flutter/services.dart';
 class PrinterManager{
   static final _platform = MethodChannel(PrinterStrings.channel);
 
-  static connect(String mac)async{
+ static connect(String mac) async {
+  await _platform.invokeMethod(
+    PrinterStrings.connectCommand,
+    {
+      PrinterStrings.macArg: mac,
+    },
+  );
+  
+  // Parse the result and return the boolean value
+ 
+}
+
+   static disconnect(S)async{
     _platform.invokeMethod(
-        PrinterStrings.connectCommand,
-      {
-        PrinterStrings.macArg : mac
-      }
+        PrinterStrings.disconnect,
+     
     );
   }
 
@@ -33,6 +43,8 @@ class PrinterStrings {
   // arguments
   static String macArg = "printer_mac";
   static String imgPathArg = "img_path";
+ static String disconnect = "disconnect_cmd";
+
 }
 
 

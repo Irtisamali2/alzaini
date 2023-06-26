@@ -14,6 +14,8 @@ import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import android.app.AlertDialog;
+import android.widget.Toast;
 
 import com.rt.printerlibrary.bean.BluetoothEdrConfigBean;
 import com.rt.printerlibrary.cmd.Cmd;
@@ -44,6 +46,8 @@ public class MainActivity extends FlutterActivity {
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
         super.configureFlutterEngine(flutterEngine);
+            PrinterManager.setMainActivity(this);
+
         new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
                 .setMethodCallHandler(
                         (call, result) -> {
@@ -59,8 +63,19 @@ public class MainActivity extends FlutterActivity {
                                    PrinterManager.printImg(imgPath);
                                }
                            }
+
+                        //     else if(call.method.equals(PrinterStrings.disconnect)){
+                        //            PrinterManager.disconnect();
+                               
+                        //    }
                         }
                 );
+    }
+
+      public void showSnackbar(String showstring) {
+//        Snackbar.make(findViewById(android.R.id.content), showstring, Snackbar.LENGTH_LONG)
+//                .show();
+        Toast.makeText(this, showstring, Toast.LENGTH_SHORT).show();
     }
 }
 
@@ -71,6 +86,8 @@ class PrinterStrings {
     static String channel = "android.flutter/printer";
     //commands
     static String connectCommand = "printer_connect";
+    static String disconnect = "disconnect_cmd";
+
     static String printCommand = "printer_print";
     // arguments
     static String macArg = "printer_mac";
@@ -96,6 +113,14 @@ class PrinterManager {
     private static RTPrinter rtPrinter;
     private static BluetoothAdapter mBluetoothAdapter;
     private static List<BluetoothDevice> pairedDeviceList ;
+ private static MainActivity mainActivity; // Add this line
+
+    // Rest of your code...
+
+    // Add a method to set the MainActivity reference
+    public static void setMainActivity(MainActivity activity) {
+        mainActivity = activity;
+    }
 
     @SuppressLint("MissingPermission")
     private static void initPrinter() {
@@ -129,17 +154,27 @@ class PrinterManager {
             PrinterInterface printerInterface = piFactory.create();
             rtPrinter.setPrinterInterface(printerInterface);
             rtPrinter.connect(bluetoothEdrConfigBean);
+            PrinterManager.mainActivity.showSnackbar("Connected"); // Call showSnackbar using the mainActivity reference
+
+
             return  0;
         } catch (Exception e) {
+            PrinterManager.mainActivity.showSnackbar("Failed"); // Call showSnackbar using the mainActivity reference
+
             e.printStackTrace();
+
+
             return  -1;
         }
     }
 
+ 
 
 
     @SuppressLint("MissingPermission")
     static void connect(String printerMac){
+    PrinterManager.mainActivity.showSnackbar("Pairing"); // Call showSnackbar using the mainActivity reference
+
         initPrinter();
         for(int i=0 ; i < pairedDeviceList.size() ; i++){
             BluetoothDevice dev = pairedDeviceList.get(i);
@@ -149,6 +184,13 @@ class PrinterManager {
             }
         }
     }
+
+    //     static void disconnect() {
+    //     if (rtPrinter != null) {
+    //         rtPrinter.disconnect(); // Use the appropriate method to disconnect the device
+    //         mainActivity.showSnackbar("Disconnected"); // Show a Snackbar or Toast message
+    //     }
+    // }
 
 
     static void printImg(String imgPath){

@@ -43,6 +43,8 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
+
     }
 
     buildTypes {
@@ -61,4 +63,6 @@ flutter {
 
 dependencies{
     implementation files('src/main/java/lib/printer_lib.jar')
+    implementation "androidx.multidex:multidex:2.0.1"
+
 }
