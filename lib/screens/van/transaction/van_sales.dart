@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:ams_printer/screens/van/transaction/van_sales_invoice_print.dart';
+import 'package:alzaini/screens/van/transaction/van_sales_invoice_print.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -16,7 +16,7 @@
 
 
     <application
-        android:label="ams_printer"
+        android:label="alzaini"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true"

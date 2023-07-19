@@ -5,6 +5,8 @@ import '../../models/api_response.dart';
 import '../../services/auth_services.dart';
 import '../../util/shared_preferences.dart';
 import '../home.dart';
+import 'package:permission_handler/permission_handler.dart';
+
 
 class LoginPage extends StatefulWidget {
   @override
@@ -159,6 +161,7 @@ class _LoginPageState extends State<LoginPage> {
           setState(() {
             isProcessing = true;
           });
+
           var authService = AuthServices();
           SharedPreferences prefs = await SharedPreferences.getInstance();
           // String player_id = prefs.getString(SharedPreVariables.PLAYER_ID);

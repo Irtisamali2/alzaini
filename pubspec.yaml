@@ -1,4 +1,4 @@
-name: ams_printer
+name: alzaini
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -53,6 +53,7 @@ dependencies:
   permission_handler: ^10.3.0
   open_file: ^3.3.2
   flutter_image_compress: ^2.0.3
+  flutter_screenutil: ^5.7.0
 
 flutter_native_splash:
   color: "#ffffff"

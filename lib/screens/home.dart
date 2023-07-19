@@ -1,8 +1,8 @@
-import 'package:ams_printer/screens/testprint.dart';
-import 'package:ams_printer/screens/van/transaction/van_invoice_search.dart';
-import 'package:ams_printer/screens/van/transaction/van_return_search.dart';
-import 'package:ams_printer/screens/van/transaction/van_sales.dart';
-import 'package:ams_printer/screens/van/transaction/van_stock_check.dart';
+import 'package:alzaini/screens/testprint.dart';
+import 'package:alzaini/screens/van/transaction/van_invoice_search.dart';
+import 'package:alzaini/screens/van/transaction/van_return_search.dart';
+import 'package:alzaini/screens/van/transaction/van_sales.dart';
+import 'package:alzaini/screens/van/transaction/van_stock_check.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,6 +13,8 @@ import '../util/shared_preferences.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+      //    final  size = MediaQuery.of(context).size;
+      // debugPrint(size.toString());
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(

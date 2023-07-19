@@ -1,6 +1,6 @@
 
-import 'package:ams_printer/printer_manager.dart';
-import 'package:ams_printer/util/global.dart';
+import 'package:alzaini/printer_manager.dart';
+import 'package:alzaini/util/global.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_scan_bluetooth/flutter_scan_bluetooth.dart';

@@ -1,5 +1,5 @@
 
-import 'package:ams_printer/models/van/van_sales_return_item.dart';
+import 'package:alzaini/models/van/van_sales_return_item.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'van_sales_return.g.dart';
