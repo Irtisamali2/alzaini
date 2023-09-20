@@ -241,11 +241,20 @@ showmessages('get path');
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                      Center(
-                    child: Image.asset(
-                      'assets/slogo.jpg',
-                      width: 90.h,
-                      height: 90.h,
-                      fit: BoxFit.contain,
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/slogo.jpg',
+                          width: 90.h,
+                          height: 90.h,
+                          fit: BoxFit.contain,
+                        ),
+                        Text("الزيني للصناعات التحويلية   ذ.م.م",  style:  TextStyle(fontSize: 13.sp,fontWeight: FontWeight.bold),
+),
+                       Text("AL ZAINI CONVERTING INDUSTRIES W.L.L", style:  TextStyle(fontSize: 13.sp,fontWeight: FontWeight.bold),
+)
+
+                      ],
                     ),
                   ),
       
